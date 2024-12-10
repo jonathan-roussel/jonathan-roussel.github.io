@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <link type="text/css" rel="stylesheet" href="Resume.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <div class="left"></div>
 <div class="stuff">
     <h2>Jonathan Roussel</h2>
@@ -70,4 +71,21 @@
     </ul>
 </div>
 <div class="right"></div>
+
+    <button class="download-btn" onclick="downloadPDF()">Download PDF</button>
+
+    <script>
+        function downloadPDF() {
+            const element = document.querySelector('.stuff');
+            const options = {
+                margin: 1,
+                filename: 'Jonathan_Roussel_Resume.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            html2pdf().from(element).set(options).save();
+        }
+    </script>
 </html>
